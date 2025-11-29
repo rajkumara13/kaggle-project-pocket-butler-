@@ -41,50 +41,19 @@ By combining multiple agents, Pocket Butler provides an intelligent, personalize
 ---
 
 ## Architecture
- ┌──────────────────────────────────────────────────────────────────┐
- │                        POCKET BUTLER SYSTEM                      │
- └──────────────────────────────────────────────────────────────────┘
++-------------------+
+|   User Interface  |
++-------------------+
+          |
+          v
++-------------------+
+|  Main Controller  |
++-------------------+
+    |        |       |       |
+    v        v       v       v
+Meal   Grocery  Pantry   Task/Reminder
+Agent  Agent   Agent    Agent
 
-                   ┌───────────────────────────┐
-                   │   User Input / Interface   │
-                   └──────────────┬────────────┘
-                                  │
-                        Natural Language Query
-                                  │
-                ┌────────────────▼────────────────┐
-                │     Orchestrator / Manager      │
-                │        (Main Agent)             │
-                └────────────────┬────────────────┘
-                                │ Intent Routing
-     ┌──────────────────────────┼──────────────────────────────┐
-     │                          │                              │
-┌────▼─────┐            ┌───────▼──────────┐          ┌────────▼─────────┐
-│ Task     │            │ Smart Search     │          │ Reminder Agent     │
-│ Planner  │            │ Agent            │          │ (Memory + Tool)    │
-│ Agent    │            └───────┬──────────┘          └───────┬───────────┘
-└────┬─────┘                    │                             │
-     │                           │ Search Query                │ Save / Fetch Reminders
-     │                           │                             │
-     │                  ┌────────▼──────────┐           ┌──────▼───────────┐
-     │                  │ Google Search API │           │ Reminder Tool DB  │
-     │                  └───────────────────┘           └───────────────────┘
-     │
-     │  Creates plans
-     │
-┌────▼──────────┐     ┌─────────────────────────┐      ┌──────────────────────────┐
-│ Meal / Routine │     │ Shopping Comparison     │      │ Summarizer / Writing     │
-│ Planner Agent  │     │ Agent                   │      │ Agent                    │
-└─────┬──────────┘     └───────────┬────────────┘      └──────────┬──────────────┘
-      │                            │ Price Lookup                    │ Summaries / Notes
-      │                            │                                 │
-      │                     ┌────────▼───────────┐            ┌──────▼─────────────┐
-      │                     │ Product Price API  │            │ Code Execution Tool │
-      │                     └────────────────────┘            └─────────────────────┘
-      │
-      │
-┌─────▼────────────┐
-│ Memory Bank      │  <-- stores user prefs, history, routines
-└──────────────────┘
 
 ##Create virtual environment and install dependencies
 python -m venv venv
