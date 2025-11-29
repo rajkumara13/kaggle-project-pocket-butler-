@@ -1,0 +1,12 @@
+google-generativeai
+python-dotenv
+pandas
+pytest
+requests
+fastapi
+uvicorn
+pyttsx3
+requests
+python-dotenv
+pandas
+pytest
